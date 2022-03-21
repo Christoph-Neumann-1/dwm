@@ -30,12 +30,12 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"alacritty", "--class", "spterm",  NULL };
-const char *spcmd2[] = {"alacritty", "--class", "spranger", "-e", "ranger", NULL };
+const char *spcmd2[] = {"alacritty", "--class", "spterm2", NULL };
 const char *spcmd3[] = {"alacritty", "--class", "spqalc","-e","qalc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spterm2",    spcmd2},
 	{"spqalc",   spcmd3},
 };
 
@@ -51,7 +51,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spranger",		NULL,		SPTAG(1),		1,			 -1 },
+	{ NULL,		  "spterm2",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "spqalc",	NULL,		SPTAG(2),		1,			 -1 },
 };
 
