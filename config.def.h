@@ -30,12 +30,12 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"alacritty", "--class", "spterm",  NULL };
-const char *spcmd2[] = {"alacritty", "--class", "spranger", "-e", "ranger", NULL };
+const char *spcmd2[] = {"alacritty", "--class", "spterm2", NULL };
 const char *spcmd3[] = {"alacritty", "--class", "spqalc","-e","qalc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spterm2",    spcmd2},
 	{"spqalc",   spcmd3},
 };
 
@@ -51,7 +51,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spranger",		NULL,		SPTAG(1),		1,			 -1 },
+	{ NULL,		  "spterm2",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "spqalc",	NULL,		SPTAG(2),		1,			 -1 },
 };
 
@@ -84,6 +84,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *lockcmd[] = { "slock", NULL};
+static const char *rofiRun[]={"rofi","-show","run",NULL};
+static const char *rofiLaunch[]={"rofi","-show","drun",NULL};
 
 static const char *upvol[]   = { "amixer", "-D", "pipewire","sset","Master","2.5%+", "unmute",     NULL };
 static const char *downvol[] = { "amixer", "-D", "pipewire","sset","Master","2.5%-", "unmute",     NULL };
@@ -133,6 +135,8 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{MODKEY|Mod1Mask, XK_r,spawn,{.v=rofiRun}},
+	{MODKEY, XK_r,spawn,{.v=rofiLaunch}},
 };
 
 /* button definitions */
